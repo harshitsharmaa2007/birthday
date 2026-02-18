@@ -218,16 +218,31 @@
         </div>
 
         <!-- Step 4: Polaroid -->
-        <div id="step-4" class="glass-card max-w-md w-full p-10 text-center">
-            <h1 class="text-3xl font-bold text-gradient mb-6">That One Time...</h1>
-            <div class="flex justify-center mb-8">
-               <div class="polaroid-rotate-3 relative w-72 h-72 
-     bg-cover bg-center flex items-center justify-center text-white"
-     style="background-image: url('memory.jpeg');">
+<div class="text-center mt-8">
 
-    <div class="bg-black bg-opacity-50 p-3 rounded">
-        Our favourite memory
+    <!-- Rotated Image Only -->
+    <div class="inline-block transform rotate-3 shadow-lg">
+        <img src="memory.jpg" alt="Memory"
+             class="w-72 h-72 object-cover rounded-lg">
     </div>
+
+    <!-- Caption -->
+    <h2 class="text-xl mt-4 font-semibold">
+        Our favourite memory
+    </h2>
+
+    <!-- Paragraph -->
+    <p class="text-gray-300 mt-2">
+        Every moment with you feels like a scene from a movie I'd watch on repeat.
+    </p>
+
+    <!-- Button -->
+    <button onclick="nextStep(5)"
+            class="btn-primary text-white px-4 py-2 mt-4 rounded-full">
+        One last thing...
+    </button>
+
+</div>
 
 </div>
             <p class="text-gray-300 mb-8">Every moment with you feels like a scene from a movie I'd watch on repeat.</p>
