@@ -198,18 +198,17 @@
             <button onclick="nextStep(4)" class="btn-primary text-white px-8 py-3 rounded-full font-bold w-full">Remember this?</button>
         </div>
 
-     <!-- Step 4: Polaroid (The Memory Video) -->
+<!-- Step 4: Polaroid (The Memory Video with Sound) -->
 <div id="step-4" class="glass-card text-center">
     <h1 class="text-2xl font-bold text-gradient mb-6">sweetest memoryy...</h1>
     
     <div class="mb-8">
         <div id="polaroid" class="polaroid-frame">
-            <!-- Replace the img tag with this video tag -->
+            <!-- Removed 'muted', added 'id' -->
             <video 
+                id="birthday-video"
                 src="memory.mp4" 
-                autoplay 
                 loop 
-                muted 
                 playsinline 
                 class="w-full h-[280px] object-cover border border-gray-100">
             </video>
@@ -219,8 +218,7 @@
 
     <p class="text-gray-400 text-sm mb-8">tere saath har ek moment feels like a scene from a movie joo me repeat prr dekhluu meri pretty baby😁💋.</p>
     <button onclick="nextStep(5)" class="btn-primary text-white px-8 py-3 rounded-full font-bold w-full">One last thing...</button>
-</div> 
-        
+</div>
         <!-- Step 5: Finale -->
         <div id="step-5" class="glass-card text-center">
             <div class="text-6xl mb-6">🎂</div>
