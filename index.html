@@ -86,12 +86,13 @@
             transition: transform 0.3s ease;
         }
 
-        .polaroid-frame img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover; /* This ensures your portrait photo fills the space perfectly */
-            border: 1px solid #eee;
-        }
+        .polaroid-frame video {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    background: #000;
+}
 
         .polaroid-caption {
             color: #333;
@@ -286,32 +287,45 @@
         /* --- Navigation Logic --- */
         let currentStep = 1;
 
-        function showStep(step) {
-            const currentCard = document.querySelector(`#step-${currentStep}`);
-            const nextCard = document.querySelector(`#step-${step}`);
-            document.getElementById('progress-bar').style.width = `${(step / 5) * 100}%`;
+ function showStep(step) {
+    const currentCard = document.querySelector(`#step-${currentStep}`);
+    const nextCard = document.querySelector(`#step-${step}`);
+    document.getElementById('progress-bar').style.width = `${(step / 5) * 100}%`;
 
-            if (currentCard) {
-                gsap.to(currentCard, {
-                    opacity: 0,
-                    y: -20,
-                    duration: 0.4,
-                    onComplete: () => {
-                        currentCard.style.display = 'none';
-                        revealNext();
-                    }
+    if (currentCard) {
+        gsap.to(currentCard, {
+            opacity: 0,
+            y: -20,
+            duration: 0.4,
+            onComplete: () => {
+                currentCard.style.display = 'none';
+                revealNext();
+            }
+        });
+    } else { revealNext(); }
+
+    function revealNext() {
+        nextCard.style.display = 'block';
+        
+        // --- ADD THIS PART FOR THE VIDEO ---
+        if (step === 4) {
+            const vid = document.getElementById('birthday-video');
+            if (vid) {
+                vid.currentTime = 0; // Start from beginning
+                vid.play().catch(error => {
+                    console.log("Video play failed. User might need to interact more.", error);
                 });
-            } else { revealNext(); }
-
-            function revealNext() {
-                nextCard.style.display = 'block';
-                gsap.fromTo(nextCard, 
-                    { opacity: 0, y: 20 },
-                    { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
-                );
-                currentStep = step;
             }
         }
+        // -----------------------------------
+
+        gsap.fromTo(nextCard, 
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+        );
+        currentStep = step;
+    }
+}
 
         function nextStep(step) { showStep(step); }
 
